@@ -1,0 +1,53 @@
+{%extends 'main.html'%}
+
+{%block title%}
+    Login
+{%endblock%}
+
+{% load static %}
+
+{%block content%}
+
+<!-- login start -->
+<div class="authenticaton">
+    <div class="container">
+        <div class="row justify-content-center align-items-center content">
+            <div class="col-md-6">
+                <img src="{% static 'images/man-entering-big-data-password-and-network-free-vector.jpg' %}" alt="">
+            </div>
+
+            <div class="col-md-6">
+                <h3 class="mb-3 text-uppercase">Login Here</h3>
+
+                
+                {%for message in messages%}
+                <div 
+                    class="alert alert-secondary" role="alert"
+                    x-data="{ show: true }" x-show="show" 
+                    x-init="setTimeout(() => show = false, 100)">
+                    {{message}}
+                </div>
+                {%endfor%}
+
+                <form action="" method="POST">
+                    {%csrf_token%}
+                    <div class="form-group mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="username" class="form-control" name="username">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password">
+                    </div>
+                    <div class="mb-2">
+                        <a href="{%url 'register-page' %}" class="">Dont have an account? Click Here</a>
+                    </div>
+                    <button type="sumbit" class="btn btn-outline-primary auth-btn">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of login -->
+
+{%endblock%}

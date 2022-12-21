@@ -1,0 +1,66 @@
+{%extends 'main.html'%}
+
+{%block title%}
+Register
+{%endblock%}
+
+{% load static %}
+
+{%block content%}
+
+<!-- register start -->
+<div class="authenticaton">
+    <div class="container">
+        <div class="row justify-content-center align-items-center content">
+            <div class="col-md-6">
+                <img src="{% static 'images/isometric-style-illustration-of-login-to-website-free-vector.jpg' %}"
+                    alt="">
+            </div>
+            <div class="col-md-6">  
+                <h3 class="mb-3 text-uppercase">Create an Account</h3>
+
+                {%if form.errors%}
+                    <div class="alert alert-danger" role="alert">
+                        {{form.errors}}
+                    </div>
+                {%endif%}
+
+                <form method="POST" action="">
+                    {%csrf_token%}
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="" class="form-label">First Name</label>
+                            {{form.first_name}}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Last Name</label>
+                            {{form.last_name}}
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="username" class="form-label">Useraname</label>
+                        {{form.username}}
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        {{form.email}}
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        {{form.password1}}
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="password2" class="form-label">Confirm Password</label>
+                        {{form.password2}}
+                    </div>
+
+                    <input type="submit" name="Create User" value="Create User" class="btn btn-outline-primary btn-lg">
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of register -->
+
+{%endblock%}

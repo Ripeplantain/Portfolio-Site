@@ -1,0 +1,98 @@
+{%extends 'main.html'%}
+
+{%block title%}
+    About
+{%endblock%}
+
+{% load static %}
+
+{%block content%}
+<!-- about section start -->
+<div class="about-section">
+    <!-- my story 1 -->
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-6 col-md-8">
+                <img src="{%static 'images/me.jpg'%}" alt="" class="about-image">
+            </div>
+            <div class="col-lg-6">
+                <h1 class="about-title">
+                    my story
+                </h1>
+                <p class="about-desc">
+                    I completed the University of Capecoast where i studied Bsc Information Technology. Upon completion i proceeded to serve as a national service personnel at the University's Students Records Section were i was employed as a full-stack web developer. I worked with php/laravel, tailwind, sql and js libraries like alphine.js. 
+                </p>
+                <p class="about-desc">
+                    I am also an alx full-stack software engineering student. Alx is a bootcamp for african developers to help them hone their skills to become better developers. Our cariculum entails lower level programming with C and higher level programming with python as well as a dev ops section. Some of the tools we manage to work with is Flask, Puppetter, Nginx, DataDog, React, Node,  and many others.
+                </p>
+                <div>
+                    <div class="mt-4">
+                    <h5 class="bg-dark text-light p-4">Tech Stack</h5>
+                    </div>
+                    <div class="d-flex justify-content-around mt-4 mb-3 stack">
+                        <div class="text-center">
+                            <a href="#"><img src="{% static 'images/django-svgrepo-com.svg'%}" width="100"></a>
+                            <p class="about-desc">Dango</p>
+                        </div>
+                        <div class="text-center">
+                            <a href="#"><img src="{% static 'images/laravel-svgrepo-com.svg'%}" width="100"></a>
+                            <p class="about-desc">Laravel</p>
+                        </div>
+                        <div class="text-center">
+                            <a href="#"><img src="{% static 'images/tailwind-svgrepo-com.svg'%}" width="100"></a>
+                            <p class="about-desc">Tailwind</p>
+                        </div>
+                        <div class="text-center">
+                            <a href="#"><img src="{% static 'images/bootstrap-svgrepo-com.svg'%}" width="100"></a>
+                            <p class="about-desc">Bootstrap</p>
+                        </div>
+                        <div class="text-center">
+                            <a href="#"><img src="{% static 'images/db-svgrepo-com.svg'%}" width="100"></a>
+                            <p class="about-desc">MySql</p>
+                        </div>
+                        <div class="text-center">
+                            <a href="#"><img src="{% static 'images/mongodb-svgrepo-com.svg' %}" width="100"></a>
+                            <p class="about-desc">Mongodb</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Asides programming -->
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-6 order-2 order-lg-1 col-md-8">
+                <h1 class="about-title">
+                    What else did i do?
+                </h1>
+                <p class="about-desc">
+                    Well like i said when im not infront of my computer im doing alot. while in school i played baseketball, both for the school team and my hall team. I also served as a script analyst in my high school literature group 
+                </p>
+                <!-- <p class="about-desc">
+                    I am also
+                </p> -->
+                <div>
+                    <div class="mt-4">
+                    <h5 class="bg-dark text-light p-4">Notable Awards</h5>
+                    </div>
+                    <div class="awards">
+                        <ol class="about-desc">
+                            <li>Third place Ghana Technical Universities games</li>
+                            <li>First Place interhalls First years games</li>
+                            <li>Two times Interhall Champion</li>
+                            <li>4th Place Regional Poetry Competition</li>
+                        </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2">
+                    <img src="{% static 'images/notabee.svg' %}" alt="" class="about-image">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- about section end -->
+{%endblock%}

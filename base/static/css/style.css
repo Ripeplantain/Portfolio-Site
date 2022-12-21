@@ -1,0 +1,204 @@
+/* General Css */
+
+body {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+    background: #fff;
+    color: #000;
+    overflow-x: hidden;
+}
+
+ul {
+    list-style:none;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* links */
+
+a {
+    text-decoration:none !important;
+    color:#999;
+    transition: all 0.5s ease-in-out;
+}
+
+a:hover {
+    color: #0dcaf0 !important;
+}
+
+/* Navbar */
+
+.navbar {
+    position:relative;
+}
+
+.navbar ul li {
+    position:relative;
+    margin-left:2.5rem;
+    margin-right:1rem;
+}
+
+.navbar ul li a {
+    position:relative;
+    display:block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight:600;
+    line-height:14px;
+    letter-spacing:1.6px;
+    text-transform:uppercase;
+    color:#999;
+}
+
+.navbar ul li button {
+    letter-spacing:0.7px;
+}
+
+.navbar-collapse {
+    text-align:center;
+}
+
+.navbar-light .navbar-toggler:focus {
+    color:#000;
+    box-shadow:0 0 0 2px;
+}
+
+/* banner content */
+
+.banner-section {
+    position:relative;
+    padding-top:3rem;
+    padding-bottom:3rem;
+}
+
+.banner-section .banner-title {
+    position:relative;
+    margin:0;
+    padding-top:3rem;
+    padding-bottom:2rem;
+    font-family: 'Poppins', sans-serif;
+    font-size:40px;
+    font-weight:400;
+    letter-spacing:1px;
+    color:#000;
+}
+
+.banner-section .banner-desc {
+    position: relative;
+    font-size:22px;
+    font-weight:500;
+}
+
+.banner-section .banner-btn {
+    position:relative;
+    font-size:16px;
+    font-weight:600;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#a5a7a7;
+}
+
+/* contact us */
+
+.contact-section {
+    position:relative;
+    padding-top:3rem;
+    padding-bottom:3rem;
+}
+
+.contact-section .contact-title {
+    position:relative;
+    margin:0;
+    padding-top:3rem;
+    padding-bottom:2rem;
+    font-family: 'Poppins', sans-serif;
+    font-size:40px;
+    font-weight:400;
+    letter-spacing:1px;
+    text-transform:capitalize;
+    color:#000;
+}
+
+.contact-section p {
+    position:relative;
+    font-size:22px;
+    font-weight:500;
+}
+
+/* footer content */
+
+.footer {
+    position:relative;
+    padding-top:50px;
+    /* background:#f7f7f7; */
+}
+
+.footer .social-media .footer-list {
+    position:relative;
+    margin:0 0 20px 0;
+    display:inline-block;
+}
+
+.footer .social-media .footer-list li {
+    float:left;
+    margin-right:10px;
+}
+
+.footer .social-media .footer-list li a {
+    position:relative;
+    font-size:30px;
+    font-weight:500;
+    letter-spacing:0.5rem;
+    color:#000;
+}
+
+/* About section design */
+
+.about-section {
+    position:relative;
+    padding-top:3rem;
+    padding-bottom:3rem;
+}
+
+.about-section .about-title {
+    position:relative;
+    margin:0;
+    padding-top:3rem;
+    padding-bottom:2rem;
+    font-family:'Poppins',sans-serif;
+    font-size:40px;
+    font-weight:400;
+    letter-spacing:1px;
+    text-transform:capitalize;
+    color:#000;
+}
+
+.about-section .about-desc {
+    position:relative;
+    font-size:22px;
+    font-weight:500;
+}
+
+.about-image {
+    border-radius:50%;
+}
+
+/* authentication design */
+
+.content {
+    margin:8%;
+    padding:4rem 1rem 4rem 1rem;
+    background:#fff;
+    box-shadow:0 0 5px 5px rgba(0,0,0, .05)
+}
+
+.auth-btn {
+    letter-spacing:1px;
+    font-size:1.4rem;
+}
+
+

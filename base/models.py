@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class Project(models.Model):
@@ -7,8 +8,8 @@ class Project(models.Model):
         Methods:- def __str__
     """
     name = models.CharField(max_length=200)
-    description = models.CharField(null=True, max_length=200)
-    image = models.ImageField
+    description = RichTextField(null=True)
+    image = models.ImageField(upload_to='images/')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

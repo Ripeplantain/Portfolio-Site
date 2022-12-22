@@ -1,12 +1,36 @@
 {%extends 'main.html'%}
 
 {%block title%}
-    Project
+Project
 {%endblock%}
 
 {% load static %}
 
 {%block content%}
 
+<div>
+    <img src="{% static 'images/computer-g050e5c4d6_1920.png'%}" alt="" height="470" width="10000">
+</div>
 
+<div class="container">
+    <div class="row">
+        {%for project in projects%}
+        <div class="mt-4">
+            <div class="col-md-6">
+                <img src="{{project.cover.url}}" alt="" width="400" height="300">
+            </div>
+            <div class="col-md-6 mb-3">
+                {{project.body|safe|truncatechars:"200"}}
+            </div>
+            <a class="text-secondary" href="#">View more...</a>
+        </div>
+        {%if request.user.groups.all.0.name == 'admin'%}
+        <div>
+            <a class="btn btn-primary me-2" href="{%url 'update-project' project.id%}">Update</a>
+            <a class="btn btn-danger ms-2" href="{%url 'delete-project' project.id%}">Delete</a>
+        </div>
+        {%endif%}
+        {%endfor%}
+    </div>
+</div>
 {%endblock%}

@@ -8,8 +8,8 @@ class Project(models.Model):
         Methods:- def __str__
     """
     name = models.CharField(max_length=200)
-    description = RichTextField(null=True)
-    image = models.ImageField(upload_to='images/')
+    body = RichTextField(null=True)
+    cover = models.ImageField(null=True, blank=True, upload_to='images/%Y/%m/')    
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

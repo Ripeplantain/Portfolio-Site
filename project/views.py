@@ -50,3 +50,8 @@ def deleteProject(request,pk):
     context = {'project': project}
     return render(request,'project/delete.html',context)
 
+def viewProject(request,pk):
+    """View a project"""
+    project = Project.objects.get(id=pk)
+    context = {'project':project}
+    return render(request,'project/view.html',context)

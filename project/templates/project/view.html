@@ -1,0 +1,37 @@
+{%extends 'main.html'%}
+
+{%block title%}
+Posts
+{%endblock%}
+
+{% load static %}
+
+{%block content%}
+<div class="blog-page">
+    <div class="container">
+        <div class="row">
+            <!-- cover image -->
+            <img src="{{project.cover.url}}" height="450">
+            <!-- end of cover image -->
+
+            <div class="mt-3 ms-4 ps-4 mt-4 pt-4">
+                <div class="blog-header">
+                    <h1 class="">{{project.name}}</h1>
+                </div>
+                <p class="mt-3 ms-1">posted {{project.created_at|timesince}} ago</p>
+                <div class="mb-4 d-flex justify-content-around">
+                    <div>
+                        <a href="">
+                            <img src="{%static 'images/comment-svgrepo-com.svg'%}" alt="" width="35" class="like-image ms-sm-2">
+                            <p class="mt-1 text-secondary">20 Comments</p>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    {{project.body|safe}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

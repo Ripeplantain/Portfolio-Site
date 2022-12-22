@@ -22,7 +22,7 @@ Project
             <div class="col-md-6 mb-3">
                 {{project.body|safe|truncatechars:"200"}}
             </div>
-            <a class="text-secondary" href="#">View more...</a>
+            <a class="text-secondary" href="{%url 'view-project' project.id%}">View more...</a>
         </div>
         {%if request.user.groups.all.0.name == 'admin'%}
         <div>

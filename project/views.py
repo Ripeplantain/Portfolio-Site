@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
-from project.forms import ProjectForm
+from project.forms import ProjectForm, CommentForm
 from django.contrib import messages
-from base.models import Project
+from base.models import Project, Comment
 from base.decorators import allowed_users
+from django.http import HttpResponseRedirect
+
 
 # Create your views here.
 
@@ -52,6 +54,50 @@ def deleteProject(request,pk):
 
 def viewProject(request,pk):
     """View a project"""
+    form = CommentForm()
     project = Project.objects.get(id=pk)
-    context = {'project':project}
+    comments = Comment.objects.all()
+    comment_count = Comment.objects.filter(project=project.id).count()
+
+    context = {
+                'project':project,
+                'comment_count':comment_count,
+                'form':form,
+                'comments':comments,  
+                }
     return render(request,'project/view.html',context)
+
+def addComment(request,pk):
+    """Add a new comment to the project"""
+    form = CommentForm()
+    project = Project.objects.get(id=pk)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+    if form.is_valid():
+        form.instance.project_id = pk
+        form.save()
+        messages.success(request, 'Your comment has been added')
+        return redirect('view-project',pk=project.id)
+
+
+    context = {
+                'form': form,
+                'project':project,
+                }
+    return render(request, 'project/edit_comment.html', context)
+
+def editComment(request,pk):
+    """Edit a comment"""
+    comment = Comment.objects.get(id=pk)
+    form = CommentForm(instance=comment)
+
+    if request.method == 'POST':
+        form = ProjectForm(request.POST or None, instance=comment)
+        if form.is_valid():
+            form.save()
+            return redirect(request.META.get('HTTP_REFERER'))
+
+    context = {'form': form}
+    return render(request, 'project/edit_comment.html',context)
+

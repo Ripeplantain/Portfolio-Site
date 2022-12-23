@@ -55,28 +55,3 @@ def viewProject(request,pk):
     project = Project.objects.get(id=pk)
     context = {'project':project}
     return render(request,'project/view.html',context)
-<<<<<<< HEAD
-
-def addComment(request,pk):
-    """Add a new comment to the project"""
-    form = CommentForm()
-    project = Project.objects.get(id=pk)
-
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-    if form.is_valid():
-        form.instance.project_id = pk
-        form.save()
-        messages.success(request, 'Your comment has been added')
-        return redirect('view-project',pk=project.id)
-
-
-    context = {
-                'form': form,
-                'project':project,
-                }
-    return render(request, 'project/edit_comment.html', context)
-
-
-=======
->>>>>>> parent of a8c0762 (i can add comments now)

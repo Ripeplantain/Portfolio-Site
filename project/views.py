@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from project.forms import ProjectForm
+from project.forms import ProjectForm, CommentForm
 from django.contrib import messages
-from base.models import Project
+from base.models import Project,Comment
 from base.decorators import allowed_users
 
 # Create your views here.
@@ -55,3 +55,38 @@ def viewProject(request,pk):
     project = Project.objects.get(id=pk)
     context = {'project':project}
     return render(request,'project/view.html',context)
+
+def addComment(request,pk):
+    """Add a new comment to the project"""
+    form = CommentForm()
+    project = Project.objects.get(id=pk)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+    if form.is_valid():
+        form.instance.project_id = pk
+        form.save()
+        messages.success(request, 'Your comment has been added')
+        return redirect('view-project',pk=project.id)
+
+
+    context = {
+                'form': form,
+                'project':project,
+                }
+    return render(request, 'project/edit_comment.html', context)
+
+def editComment(request,pk):
+    """Edit a comment"""
+    comment = Comment.objects.get(id=pk)
+    form = CommentForm(instance=comment)
+
+    if request.method == 'POST':
+        form = ProjectForm(request.POST or None, instance=comment)
+        if form.is_valid():
+            form.save()
+            return redirect(request.META.get('HTTP_REFERER'))
+
+    context = {'form': form}
+    return render(request, 'project/edit_comment.html',context)
+

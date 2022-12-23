@@ -14,15 +14,6 @@ Posts
             <img src="{{project.cover.url}}" height="450">
             <!-- end of cover image -->
 
-            {%for message in messages%}
-            <div 
-                class="alert alert-secondary" role="alert"
-                x-data="{ show: true }" x-show="show" 
-                x-init="setTimeout(() => show = false, 100)">
-                {{message}}
-            </div>
-            {%endfor%}
-
             <div class="mt-3 ms-4 ps-4 mt-4 pt-4">
                 <div class="blog-header">
                     <h1 class="">{{project.name}}</h1>
@@ -32,7 +23,7 @@ Posts
                     <div>
                         <a href="">
                             <img src="{%static 'images/comment-svgrepo-com.svg'%}" alt="" width="35" class="like-image ms-sm-2">
-                            <p class="mt-1 text-secondary">{{comment_count}} Comments</p>
+                            <p class="mt-1 text-secondary">20 Comments</p>
                         </a>
                     </div>
                 </div>
@@ -40,11 +31,6 @@ Posts
                     {{project.body|safe}}
                 </div>
             </div>
-
-            <!-- comment section -->
-            {%include 'project/comment.html'%}
-            <!-- end of comment section -->
-
         </div>
     </div>
 </div>

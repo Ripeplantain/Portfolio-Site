@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect
-from project.forms import ProjectForm, CommentForm
+from project.forms import ProjectForm
 from django.contrib import messages
-from base.models import Project, Comment
+from base.models import Project
 from base.decorators import allowed_users
-from django.http import HttpResponseRedirect
-
 
 # Create your views here.
 
@@ -54,18 +52,10 @@ def deleteProject(request,pk):
 
 def viewProject(request,pk):
     """View a project"""
-    form = CommentForm()
     project = Project.objects.get(id=pk)
-    comments = Comment.objects.all()
-    comment_count = Comment.objects.filter(project=project.id).count()
-
-    context = {
-                'project':project,
-                'comment_count':comment_count,
-                'form':form,
-                'comments':comments,  
-                }
+    context = {'project':project}
     return render(request,'project/view.html',context)
+<<<<<<< HEAD
 
 def addComment(request,pk):
     """Add a new comment to the project"""
@@ -88,3 +78,5 @@ def addComment(request,pk):
     return render(request, 'project/edit_comment.html', context)
 
 
+=======
+>>>>>>> parent of a8c0762 (i can add comments now)

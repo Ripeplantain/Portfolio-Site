@@ -1,6 +1,5 @@
 from django.db import models
 from ckeditor.fields import RichTextField
-from django.contrib.auth.models import User
 
 # Create your models here.
 class Project(models.Model):
@@ -27,8 +26,7 @@ class Comment(models.Model):
         Methods:- def __str__
     """
     body = models.TextField(blank=True)
-    username = models.CharField(max_length=255,null=True)
-    project = models.ForeignKey(Project, related_name="comments", on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -36,4 +34,4 @@ class Comment(models.Model):
         ordering = ['-created_at', '-updated_at']
 
     def __str__(self):
-        return self.username
+        return self.project

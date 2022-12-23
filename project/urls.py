@@ -9,5 +9,8 @@ urlpatterns = [
     path('update/<str:pk>/', views.updateProject, name='update-project'),
     path('delete/<str:pk>/', views.deleteProject, name='delete-project'),
     path('view/<str:pk>/', views.viewProject, name='view-project'),
+<<<<<<< HEAD
     path('comment/<str:pk>', views.addComment, name='add-comment'),
+=======
+>>>>>>> parent of a8c0762 (i can add comments now)
 ]

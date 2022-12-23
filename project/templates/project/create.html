@@ -10,16 +10,6 @@
     <div class="blog-post">
         <div class="container">
 
-            {%for message in messages%}
-            <div 
-                class="alert alert-secondary" role="alert"
-                x-data="{ show: true }" x-show="show" 
-                x-init="setTimeout(() => show = false, 100)">
-                {{message}}
-            </div>
-            {%endfor%}
-
-
 
             <div class="row mt-4">
                 <h3 class="d-flex justify-content-center mb-4">Add Project</h3>

@@ -1,5 +1,6 @@
 from django.db import models
-from ckeditor.fields import RichTextField
+# from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 class Project(models.Model):
@@ -8,7 +9,8 @@ class Project(models.Model):
         Methods:- def __str__
     """
     name = models.CharField(max_length=200)
-    body = RichTextField(null=True)
+    # body = RichTextField(null=True)
+    body = RichTextUploadingField(null=True)
     cover = models.ImageField(null=True, blank=True, upload_to='images/%Y/%m/')    
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

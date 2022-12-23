@@ -9,7 +9,7 @@ Delete Comment
 {%block content%}
 <form action="" method="post">
     {%csrf_token%}
-    <div class="container d-flex flex-column align-items-center mt-4">
+    <div class="container d-flex flex-column justify-content-center align-items-center mt-4" style="height: 60vh;">
         <!-- <img src="{{project.cover.url}}" alt="" width="500"> -->
         <h3 class="mt-4">Are you sure you want to delele {{comment.body}}?</h3>
 

@@ -21,7 +21,7 @@ def createProject(request):
         if form.is_valid():
             form.save()
             messages.success(request,'Post has been created successfully')
-            return redirect('home')
+            return redirect('project-page')
     context = {'form': form}
     return render(request, 'project/create.html', context)
 
@@ -53,7 +53,7 @@ def deleteProject(request,pk):
 def viewProject(request,pk):
     """View a project"""
     project = Project.objects.get(id=pk)
-    comments = Comment.objects.all()
+    comments = Comment.objects.filter(project=project)
     comment_count = Comment.objects.filter(project=project.id).count()
 
     context = {

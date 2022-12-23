@@ -53,7 +53,15 @@ def deleteProject(request,pk):
 def viewProject(request,pk):
     """View a project"""
     project = Project.objects.get(id=pk)
-    context = {'project':project}
+    comments = Comment.objects.all()
+    comment_count = Comment.objects.filter(project=project.id).count()
+
+    context = {
+                'project':project,
+                'comment_count':comment_count,
+                'comments':comments,  
+                }
+
     return render(request,'project/view.html',context)
 
 def addComment(request,pk):
@@ -63,18 +71,17 @@ def addComment(request,pk):
 
     if request.method == 'POST':
         form = CommentForm(request.POST)
-    if form.is_valid():
-        form.instance.project_id = pk
-        form.save()
-        messages.success(request, 'Your comment has been added')
-        return redirect('view-project',pk=project.id)
-
+        if form.is_valid():
+            form.instance.project_id = pk
+            form.save()
+            messages.success(request, 'Your comment has been added')
+            return redirect('view-project',pk=project.id)
 
     context = {
                 'form': form,
                 'project':project,
                 }
-    return render(request, 'project/edit_comment.html', context)
+    return render(request, 'project/add_comment.html', context)
 
 def editComment(request,pk):
     """Edit a comment"""
@@ -85,8 +92,18 @@ def editComment(request,pk):
         form = ProjectForm(request.POST or None, instance=comment)
         if form.is_valid():
             form.save()
-            return redirect(request.META.get('HTTP_REFERER'))
+            return redirect('view-project',pk=comment.project.id)
 
     context = {'form': form}
-    return render(request, 'project/edit_comment.html',context)
+    return render(request, 'project/add_comment.html',context)
+
+def deleteComment(request,pk):
+    """Delete a comment"""
+    comment = Comment.objects.get(id=pk)
+    if request.method == 'POST':
+        comment.delete()
+        return redirect('view-project',pk=comment.project.id)
+
+    context = {'comment': comment}
+    return render(request,'project/delete_comment.html',context)
 

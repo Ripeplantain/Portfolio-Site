@@ -23,7 +23,7 @@ Posts
                     <div>
                         <a href="">
                             <img src="{%static 'images/comment-svgrepo-com.svg'%}" alt="" width="35" class="like-image ms-sm-2">
-                            <p class="mt-1 text-secondary">20 Comments</p>
+                            <p class="mt-1 text-secondary">{{comment_count}} Comments</p>
                         </a>
                     </div>
                 </div>
@@ -32,6 +32,9 @@ Posts
                 </div>
             </div>
         </div>
+
+        {%include 'project/comment.html'%}
+
     </div>
 </div>
 {%endblock%}

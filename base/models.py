@@ -26,6 +26,7 @@ class Comment(models.Model):
         Methods:- def __str__
     """
     body = models.TextField(blank=True)
+    username = models.CharField(max_length=255,null=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

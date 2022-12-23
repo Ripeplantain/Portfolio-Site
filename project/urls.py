@@ -10,5 +10,4 @@ urlpatterns = [
     path('delete/<str:pk>/', views.deleteProject, name='delete-project'),
     path('view/<str:pk>/', views.viewProject, name='view-project'),
     path('comment/<str:pk>', views.addComment, name='add-comment'),
-    path('comment/<str:pk>/', views.editComment, name='edit-comment'),
 ]

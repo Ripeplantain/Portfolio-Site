@@ -87,17 +87,4 @@ def addComment(request,pk):
                 }
     return render(request, 'project/edit_comment.html', context)
 
-def editComment(request,pk):
-    """Edit a comment"""
-    comment = Comment.objects.get(id=pk)
-    form = CommentForm(instance=comment)
-
-    if request.method == 'POST':
-        form = ProjectForm(request.POST or None, instance=comment)
-        if form.is_valid():
-            form.save()
-            return redirect(request.META.get('HTTP_REFERER'))
-
-    context = {'form': form}
-    return render(request, 'project/edit_comment.html',context)
 

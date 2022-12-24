@@ -31,9 +31,14 @@
                     I am also a writer 🖊️, poet ⚫, basketball player 🏀 &amp; God lover 🙏 when im not infront
                     of my computer
                 </p>
-                <a href="{%url 'about-page' %}" class="banner-btn">
-                    read more &rarr;
-                </a>
+                <div>
+                    <a href="{%url 'about-page' %}" class="banner-btn">
+                        read more &rarr;
+                    </a>
+                    <a href="{% url 'download_pdf_file' filename='resume.pdf'%}" class="btn btn-success">
+                        Download Resume
+                    </a>
+                </div>
             </div>
             <div class="col-lg-6 col-md-8">
                 <img src="{% static 'images/exhausted_computer_user.svg' %}" alt="">

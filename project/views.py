@@ -4,12 +4,19 @@ from django.contrib import messages
 from base.models import Project,Comment
 from base.decorators import allowed_users
 
+from django.core.paginator import Paginator
+
 # Create your views here.
 
 def projectPage(request):
     """This is the view to the project page"""
     projects = Project.objects.all()
-    context = {'projects': projects}
+
+    paginator = Paginator(projects, 5) # Show 25 contacts per page.
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
+    context = {'page_obj': page_obj}
     return render(request, 'project/project.html', context)
 
 @allowed_users(allowed_roles=['admin'])

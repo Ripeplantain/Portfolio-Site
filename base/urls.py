@@ -10,4 +10,5 @@ urlpatterns = [
     path('login/', views.loginPage, name='login-page'),
     path('register/', views.registerPage, name='register-page'),
     path('logout/', views.logoutUser, name='logout-user'),
+    path('downloadpdf/<str:filename>/', views.download_pdf_file, name='download_pdf_file'),
 ]

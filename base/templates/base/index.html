@@ -31,9 +31,16 @@
                     I am also a writer 🖊️, poet ⚫, basketball player 🏀 &amp; God lover 🙏 when im not infront
                     of my computer
                 </p>
-                <a href="{%url 'about-page' %}" class="banner-btn">
-                    read more &rarr;
-                </a>
+                <div class="d-flex justify-content-around">
+                    <a href="{%url 'about-page' %}" class="banner-btn">
+                        read more &rarr;
+                    </a>
+                    {%for cv in cvs%}
+                    <a href="{{cv.pdf.url}}" class="btn btn-success text-uppercase p-3">
+                        Download my CV
+                    </a>
+                    {%endfor%}
+                </div>
             </div>
             <div class="col-lg-6 col-md-8">
                 <img src="{% static 'images/exhausted_computer_user.svg' %}" alt="">

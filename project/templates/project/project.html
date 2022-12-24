@@ -13,6 +13,16 @@ Project
 </div>
 
 <div class="container d-flex justify-content-center align-items-center" style="width: 40vw;">
+
+    {%for message in messages%}
+    <div 
+        class="alert alert-secondary" role="alert"
+        x-data="{ show: true }" x-show="show" 
+        x-init="setTimeout(() => show = false, 3000)">
+        {{message}}
+    </div>
+    {%endfor%}
+
     <div class="row">
         {%for project in projects%}
         <div class="mt-4">

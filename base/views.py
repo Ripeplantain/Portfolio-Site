@@ -1,16 +1,25 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib.auth import login,authenticate,logout
 from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth.models import Group
-from .decorators import unauthenticated_user, allowed_users
+from .decorators import unauthenticated_user
+from .models import CV
 
 # Create your views here.
 
 def index(request):
     """View to the home page of application"""
-    return render(request, 'base/index.html')
+    # cvs=CV.objects.all()
+    if request.method == 'POST':
+        title=request.POST['title']
+        upload1=request.FILES['upload']
+        object=cvs.objects.create(title=title,upload='images')
+        object.save()
+    cvs=CV.objects.all()
+
+    context = {'cvs': cvs}
+    return render(request, 'base/index.html',context)
 
 def aboutPage(request):
     """View to the about page of application"""

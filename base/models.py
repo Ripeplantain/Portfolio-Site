@@ -38,3 +38,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.project
+
+class CV(models.Model):
+    title=models.CharField(max_length=50)
+    upload=models.FileField(upload_to="images")

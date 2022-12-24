@@ -4,13 +4,37 @@ from django.contrib.auth import login,authenticate,logout
 from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth.models import Group
-from .decorators import unauthenticated_user, allowed_users
+from .decorators import unauthenticated_user
+
+import mimetypes
+import os
+from django.http.response import HttpResponse
 
 # Create your views here.
 
 def index(request):
     """View to the home page of application"""
     return render(request, 'base/index.html')
+
+def download_pdf_file(request, filename=''):
+    if filename != '':
+        # Define Django project base directory
+        BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        # Define the full file path
+        filepath = BASE_DIR + '/images/images/' + filename
+        # Open the file for reading content
+        path = open(filepath, 'rb')
+        # Set the mime type
+        mime_type, _ = mimetypes.guess_type(filepath)
+        # Set the return value of the HttpResponse
+        response = HttpResponse(path, content_type=mime_type)
+        # Set the HTTP header for sending to browser
+        response['Content-Disposition'] = "attachment; filename=%s" % filename
+        # Return the response value
+        return response
+    else:
+        # Load the template
+        return render(request, 'base/index.html')
 
 def aboutPage(request):
     """View to the about page of application"""

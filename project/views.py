@@ -90,20 +90,6 @@ def addComment(request,pk):
                 }
     return render(request, 'project/add_comment.html', context)
 
-def editComment(request,pk):
-    """Edit a comment"""
-    comment = Comment.objects.get(id=pk)
-    form = CommentForm(instance=comment)
-
-    if request.method == 'POST':
-        form = ProjectForm(request.POST or None, instance=comment)
-        if form.is_valid():
-            form.save()
-            return redirect('view-project',pk=comment.project.id)
-
-    context = {'form': form}
-    return render(request, 'project/add_comment.html',context)
-
 def deleteComment(request,pk):
     """Delete a comment"""
     comment = Comment.objects.get(id=pk)
@@ -113,4 +99,18 @@ def deleteComment(request,pk):
 
     context = {'comment': comment}
     return render(request,'project/delete_comment.html',context)
+
+def editComment(request,pk):
+    """Edit a comment"""
+    comment = Comment.objects.get(id=pk)
+    form = CommentForm(instance=comment)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST or None, request.FILES or None ,instance=comment)
+        if form.is_valid():
+            form.save()
+            return redirect('view-project',pk=comment.project.id)
+
+    context = {'form':form}
+    return render(request,'project/add_comment.html',context)
 
